@@ -8,8 +8,12 @@
     mc:Ignorable="d">
 
     <StackPanel Background='#007FFF'>
-        <Button Content="Get Weather" Click="Button_Click" />
+        <Button Content="Get Weather"
+                Click="Button_Click" />
         <TextBlock Name="ResultTextBlock"/>
-        <Image Name="ResultImage"/>
+        <Image Name="ResultImage" 
+               Width="200"
+               Height="200"
+               Stretch="UniformToFill"/>
     </StackPanel>
 </Page>
