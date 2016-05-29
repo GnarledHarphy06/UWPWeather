@@ -31,7 +31,7 @@ namespace UWPWeather
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var position = await LocationManager.GetPosition();
-
+            
             RootObject myWeather = await OpenWeatherMapProxy.GetWeather(
                 position.Coordinate.Latitude,
                 position.Coordinate.Longitude);

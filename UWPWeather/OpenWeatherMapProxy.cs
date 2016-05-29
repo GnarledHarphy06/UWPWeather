@@ -15,7 +15,7 @@ namespace UWPWeather
         public async static Task<RootObject> GetWeather(double lat, double lon)
         {
             var http = new HttpClient();
-            var response = await http.GetAsync($"http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=27ef8778fb00b062c28e1b78c9b8764b");
+            var response = await http.GetAsync($"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={key}");
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof (RootObject));
 
@@ -24,6 +24,14 @@ namespace UWPWeather
 
             return data;
         }
+
+        public static void GetWeather()
+        {
+
+        }
+
+        // little APPID key addition
+        private static string key { get; } = "27ef8778fb00b062c28e1b78c9b8764b";
     }
 
     [DataContract]
@@ -53,8 +61,6 @@ namespace UWPWeather
         public string name { get; set; }
         [DataMember]
         public int cod { get; set; }
-        // little APPID key addition
-        public string key { get; } = "27ef8778fb00b062c28e1b78c9b8764b";
     }
 
     [DataContract]
@@ -85,7 +91,7 @@ namespace UWPWeather
         [DataMember]
         public double  temp { get; set; }
         [DataMember]
-        public int pressure { get; set; }
+        public double pressure { get; set; }
         [DataMember]
         public int humidity { get; set; }
         [DataMember]
